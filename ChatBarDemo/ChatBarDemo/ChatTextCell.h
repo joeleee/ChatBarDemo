@@ -1,14 +1,13 @@
 //
-//  WNTSVideoRoomChatTextCell.h
-//  WNTVideo
+//  ChatTextCell.h
 //
 //  Created by Joe Lee on 2015-7-17.
-//  Copyright (c) 2015年 WANTS. All rights reserved.
+//  Copyright (c) 2015年 Joe. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
 
-@interface WNTSVideoRoomChatTextCell : UITableViewCell
+@interface ChatTextCell : UITableViewCell
 
 @property (nonatomic, strong, readonly) UIView *bubbleBackgroundView;
 @property (nonatomic, strong, readonly) UIImageView *bubbleImageView;

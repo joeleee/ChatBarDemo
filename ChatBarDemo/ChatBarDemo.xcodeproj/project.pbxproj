@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		D8FB5A2D1BCBA98300106DD9 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D8FB5A2C1BCBA98300106DD9 /* main.m */; };
 		D8FB5A301BCBA98300106DD9 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D8FB5A2F1BCBA98300106DD9 /* AppDelegate.m */; };
-		D8FB5A331BCBA98300106DD9 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D8FB5A321BCBA98300106DD9 /* ViewController.m */; };
+		D8FB5A331BCBA98300106DD9 /* MessageListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D8FB5A321BCBA98300106DD9 /* MessageListViewController.m */; };
 		D8FB5A361BCBA98300106DD9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D8FB5A341BCBA98300106DD9 /* Main.storyboard */; };
 		D8FB5A381BCBA98300106DD9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D8FB5A371BCBA98300106DD9 /* Assets.xcassets */; };
 		D8FB5A3B1BCBA98300106DD9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D8FB5A391BCBA98300106DD9 /* LaunchScreen.storyboard */; };
@@ -17,6 +17,8 @@
 		D8FB5A511BCBA98400106DD9 /* ChatBarDemoUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = D8FB5A501BCBA98400106DD9 /* ChatBarDemoUITests.m */; };
 		D8FB5A6A1BCCD82B00106DD9 /* ChatToolBar.m in Sources */ = {isa = PBXBuildFile; fileRef = D8FB5A691BCCD82B00106DD9 /* ChatToolBar.m */; settings = {ASSET_TAGS = (); }; };
 		D8FB5A6D1BCCDE7B00106DD9 /* ChatTextCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D8FB5A6C1BCCDE7B00106DD9 /* ChatTextCell.m */; settings = {ASSET_TAGS = (); }; };
+		D8FB5A721BCF538E00106DD9 /* ContainerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D8FB5A711BCF538E00106DD9 /* ContainerViewController.m */; settings = {ASSET_TAGS = (); }; };
+		D8FB5A751BCF53EC00106DD9 /* ContentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D8FB5A741BCF53EC00106DD9 /* ContentViewController.m */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -41,8 +43,8 @@
 		D8FB5A2C1BCBA98300106DD9 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		D8FB5A2E1BCBA98300106DD9 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		D8FB5A2F1BCBA98300106DD9 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		D8FB5A311BCBA98300106DD9 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		D8FB5A321BCBA98300106DD9 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		D8FB5A311BCBA98300106DD9 /* MessageListViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MessageListViewController.h; sourceTree = "<group>"; };
+		D8FB5A321BCBA98300106DD9 /* MessageListViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MessageListViewController.m; sourceTree = "<group>"; };
 		D8FB5A351BCBA98300106DD9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		D8FB5A371BCBA98300106DD9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D8FB5A3A1BCBA98300106DD9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -57,6 +59,10 @@
 		D8FB5A691BCCD82B00106DD9 /* ChatToolBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatToolBar.m; sourceTree = "<group>"; };
 		D8FB5A6B1BCCDE7B00106DD9 /* ChatTextCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatTextCell.h; sourceTree = "<group>"; };
 		D8FB5A6C1BCCDE7B00106DD9 /* ChatTextCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatTextCell.m; sourceTree = "<group>"; };
+		D8FB5A701BCF538E00106DD9 /* ContainerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContainerViewController.h; sourceTree = "<group>"; };
+		D8FB5A711BCF538E00106DD9 /* ContainerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContainerViewController.m; sourceTree = "<group>"; };
+		D8FB5A731BCF53EC00106DD9 /* ContentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContentViewController.h; sourceTree = "<group>"; };
+		D8FB5A741BCF53EC00106DD9 /* ContentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContentViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,8 +115,12 @@
 			children = (
 				D8FB5A2E1BCBA98300106DD9 /* AppDelegate.h */,
 				D8FB5A2F1BCBA98300106DD9 /* AppDelegate.m */,
-				D8FB5A311BCBA98300106DD9 /* ViewController.h */,
-				D8FB5A321BCBA98300106DD9 /* ViewController.m */,
+				D8FB5A701BCF538E00106DD9 /* ContainerViewController.h */,
+				D8FB5A711BCF538E00106DD9 /* ContainerViewController.m */,
+				D8FB5A311BCBA98300106DD9 /* MessageListViewController.h */,
+				D8FB5A321BCBA98300106DD9 /* MessageListViewController.m */,
+				D8FB5A731BCF53EC00106DD9 /* ContentViewController.h */,
+				D8FB5A741BCF53EC00106DD9 /* ContentViewController.m */,
 				D8FB5A6B1BCCDE7B00106DD9 /* ChatTextCell.h */,
 				D8FB5A6C1BCCDE7B00106DD9 /* ChatTextCell.m */,
 				D8FB5A671BCCD82B00106DD9 /* ChatToolBar */,
@@ -288,9 +298,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D8FB5A331BCBA98300106DD9 /* ViewController.m in Sources */,
+				D8FB5A751BCF53EC00106DD9 /* ContentViewController.m in Sources */,
+				D8FB5A331BCBA98300106DD9 /* MessageListViewController.m in Sources */,
 				D8FB5A301BCBA98300106DD9 /* AppDelegate.m in Sources */,
 				D8FB5A6A1BCCD82B00106DD9 /* ChatToolBar.m in Sources */,
+				D8FB5A721BCF538E00106DD9 /* ContainerViewController.m in Sources */,
 				D8FB5A2D1BCBA98300106DD9 /* main.m in Sources */,
 				D8FB5A6D1BCCDE7B00106DD9 /* ChatTextCell.m in Sources */,
 			);

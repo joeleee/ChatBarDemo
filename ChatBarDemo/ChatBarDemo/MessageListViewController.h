@@ -1,5 +1,5 @@
 //
-//  ViewController.h
+//  MessageListViewController.h
 //  ChatBarDemo
 //
 //  Created by Joe Lee on 2015-10-12.
@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UIViewController
+@interface MessageListViewController : UIViewController
 
 
 @end

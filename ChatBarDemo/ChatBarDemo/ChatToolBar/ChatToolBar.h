@@ -8,6 +8,24 @@
 
 #import <UIKit/UIKit.h>
 
+@class ChatToolBar;
+
+@protocol ChatToolBarLayoutDataSource <NSObject>
+
+@required
+- (NSUInteger)numberOfBarViewsInChatToolBar:(nonnull ChatToolBar *)toolBar;
+- (nonnull UIView *)chatToolBar:(nonnull ChatToolBar *)toolBar barViewOfIndex:(NSUInteger)index;
+- (nonnull UIView *)chatToolBar:(nonnull ChatToolBar *)toolBar boardViewOfIndex:(NSUInteger)index;
+- (CGFloat)chatToolBar:(nonnull ChatToolBar *)toolBar heightForBoardViewOfIndex:(NSUInteger)index;
+
+@optional
+- (NSUInteger)numberOfLeftSideBarViewsInChatToolBar:(nonnull ChatToolBar *)toolBar;
+
+@end
+
 @interface ChatToolBar : UIView
+
+@property (nullable, nonatomic, weak) id<UITextViewDelegate> textViewDelegate;
+@property (nonatomic, weak) id<ChatToolBarLayoutDataSource> layoutDataSource;
 
 @end

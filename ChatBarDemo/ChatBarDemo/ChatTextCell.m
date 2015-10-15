@@ -1,9 +1,8 @@
 //
-//  WNTSVideoRoomChatTextCell.m
-//  WNTVideo
+//  ChatTextCell.m
 //
 //  Created by Joe Lee on 2015-7-17.
-//  Copyright (c) 2015年 WANTS. All rights reserved.
+//  Copyright (c) 2015年 Joe. All rights reserved.
 //
 
 #import "ChatTextCell.h"
@@ -23,7 +22,7 @@ static CGFloat const kMessageTextLabelLeftMargin = 10.0f;
 static CGFloat const kMessageTextLabelRightMargin = 10.0f;
 
 
-@interface WNTSVideoRoomChatTextCell ()
+@interface ChatTextCell ()
 
 @property (nonatomic, strong) UIView *bubbleBackgroundView;
 @property (nonatomic, strong) UIImageView *bubbleImageView;
@@ -34,7 +33,7 @@ static CGFloat const kMessageTextLabelRightMargin = 10.0f;
 @end
 
 
-@implementation WNTSVideoRoomChatTextCell
+@implementation ChatTextCell
 
 + (CGFloat)requiredCellHeightForText:(NSString *)text
 {
@@ -52,7 +51,7 @@ static CGFloat const kMessageTextLabelRightMargin = 10.0f;
 
     CGFloat requiredHeight = kBubbleTopMargin + kUserNameLabelTopMargin + kUserNameLabelHeight + kMessageTextLabelTopMargin + kMessageTextLabelBottomMargin;
 
-    CGFloat textMaxWidth = [UIApplication sharedApplication].keyWindow.width - (kBubbleLeftMargin + kUserImageLeftMargin + kUserImageWidth + kMessageTextLabelLeftMargin + kMessageTextLabelRightMargin + kBubbleLeftMargin);
+    CGFloat textMaxWidth = [UIApplication sharedApplication].keyWindow.frame.size.width - (kBubbleLeftMargin + kUserImageLeftMargin + kUserImageWidth + kMessageTextLabelLeftMargin + kMessageTextLabelRightMargin + kBubbleLeftMargin);
     CGFloat textHeight = [text boundingRectWithSize:CGSizeMake(textMaxWidth, 1000) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName: CHAT_TEXT_FONT} context:nil].size.height; // 17.895f
     if (textHeight > 40.0f) {
         textHeight = 40.0f;
@@ -167,7 +166,7 @@ static CGFloat const kMessageTextLabelRightMargin = 10.0f;
 
     _userNameLabel = [[UILabel alloc] initWithFrame:CGRectZero];
     _userNameLabel.numberOfLines = 1;
-    _userNameLabel.textColor = [UIColor whiteColor];
+    _userNameLabel.textColor = [UIColor blackColor];
     _userNameLabel.font = [UIFont systemFontOfSize:10.0f];
     _userNameLabel.alpha = 0.5f;
     _userNameLabel.minimumScaleFactor = 10.0f / 12.0f;
@@ -183,7 +182,7 @@ static CGFloat const kMessageTextLabelRightMargin = 10.0f;
 
     _messageTextLabel = [[UILabel alloc] initWithFrame:CGRectZero];
     _messageTextLabel.numberOfLines = 3;
-    _messageTextLabel.textColor = [UIColor whiteColor];
+    _messageTextLabel.textColor = [UIColor blackColor];
     _messageTextLabel.font = CHAT_TEXT_FONT;
     _messageTextLabel.minimumScaleFactor = 10.0f / 15.0f;
     _messageTextLabel.adjustsFontSizeToFitWidth = YES;
