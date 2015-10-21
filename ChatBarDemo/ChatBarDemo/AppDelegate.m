@@ -8,8 +8,10 @@
 
 #import "AppDelegate.h"
 
+#import "RootNavigationController.h"
 #import "MessageListViewController.h"
 #import "ContainerViewController.h"
+#import "BarContainerViewController.h"
 
 @interface AppDelegate ()
 
@@ -23,7 +25,8 @@
   self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
   [self.window makeKeyAndVisible];
 
-  UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:[[MessageListViewController alloc] init]];
+  UINavigationController *navigationController = [[RootNavigationController alloc] initWithRootViewController:[[BarContainerViewController alloc] init]];
+//  UINavigationController *navigationController = [[RootNavigationController alloc] initWithRootViewController:[[MessageListViewController alloc] init]];
   self.window.rootViewController = navigationController;
   return YES;
 }

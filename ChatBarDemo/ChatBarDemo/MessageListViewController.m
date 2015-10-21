@@ -217,6 +217,7 @@ static CGFloat initHeight = 0.0f;
 
   self.swipGesture = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(didSwipChatToolBar:)];
   self.swipGesture.delegate = self;
+  self.swipGesture.direction = UISwipeGestureRecognizerDirectionRight | UISwipeGestureRecognizerDirectionLeft;
   [_chatToolBar addGestureRecognizer:self.swipGesture];
 
   [self.contentViewController.collectionView.panGestureRecognizer requireGestureRecognizerToFail:self.panGesture];

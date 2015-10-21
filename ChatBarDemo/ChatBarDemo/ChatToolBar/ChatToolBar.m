@@ -8,108 +8,111 @@
 
 #import "ChatToolBar.h"
 
-const CGFloat toolBarHeight = 50.0f;
+#import "ChatToolBarLayout.h"
 
-@interface ChatToolBar () <UITextViewDelegate>
+const CGFloat collectionViewHeight = 60.0f;
 
-@property (nonatomic, strong) UITextView *inputField;
-@property (nonatomic, strong) UIButton *cameraButton;
-@property (nonatomic, strong) UIScrollView *toolScrollView;
+@interface ChatToolBar () <UICollectionViewDataSource, UICollectionViewDelegate>
 
-@property (nonatomic, strong) NSMutableArray *leftCustomViews;
-@property (nonatomic, strong) NSMutableArray *rightCustomViews;
-@property (nonatomic, strong) NSMutableArray *boardCustomViews;
+@property (nonatomic, strong) UICollectionView *collectionView;
+@property (nonatomic, strong) UICollectionViewLayout *collectionViewLayout;
+@property (nonatomic, strong) NSLayoutConstraint *collectionViewHeight;
 
 @end
 
 @implementation ChatToolBar
 
++ (UIColor *)randomColor
+{
+  CGFloat hue = ( arc4random() % 256 / 256.0 ); //0.0 to 1.0
+  CGFloat saturation = ( arc4random() % 128 / 256.0 ) + 0.5; // 0.5 to 1.0,away from white
+  CGFloat brightness = ( arc4random() % 128 / 256.0 ) + 0.5; //0.5 to 1.0,away from black
+  return [UIColor colorWithHue:hue saturation:saturation brightness:brightness alpha:1];
+}
+
 - (instancetype)init
 {
   if (self = [super init]) {
   }
+  [self subviewsInit];
 
   return self;
 }
 
-- (void)subviewsInit
+- (void)layoutSubviews
 {
-
-  NSDictionary *metrics = @{@"toolBarHeight" :@(toolBarHeight)};
-  NSDictionary *views = NSDictionaryOfVariableBindings(_toolScrollView, _inputField, _cameraButton);
-
-  [self addSubview:self.toolScrollView];
-  [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-0-[_toolScrollView]-0-|" options:0 metrics:metrics views:views]];
-  [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-0-[_toolScrollView(==toolBarHeight)]" options:0 metrics:metrics views:views]];
-
-  NSUInteger customViewsCount = [self.layoutDataSource numberOfBarViewsInChatToolBar:self];
-  NSUInteger leftCustomViewsCount = [self.layoutDataSource numberOfLeftSideBarViewsInChatToolBar:self];
-  self.leftCustomViews = [NSMutableArray array];
-  self.rightCustomViews = [NSMutableArray array];
-  self.boardCustomViews = [NSMutableArray array];
-
-  for (NSUInteger index = 0; index < customViewsCount; ++index) {
-    UIView *customView = [self.layoutDataSource chatToolBar:self barViewOfIndex:index];
-    NSAssert(customView, @"Custom should not be nil!");
-    [self.toolScrollView addSubview:customView];
-
-    UIView *lastView = self.rightCustomViews.lastObject ? self.rightCustomViews.lastObject : self.leftCustomViews.lastObject;
-
-    if (index == leftCustomViewsCount) {
-      [self.toolScrollView addSubview:self.cameraButton];
-      [self.toolScrollView addSubview:self.inputField];
-      [self.toolScrollView addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"" options:0 metrics:metrics views:NSDictionaryOfVariableBindings(_cameraButton, _inputField, lastView)]];
-    }
-
-    if (index < leftCustomViewsCount) {
-      [self.leftCustomViews addObject:customView];
-    } else {
-      [self.rightCustomViews addObject:customView];
-    }
-
-    UIView *boardView = [self.layoutDataSource chatToolBar:self boardViewOfIndex:index];
-    [self addSubview:boardView];
-    [self.boardCustomViews addObject:boardView];
-  }
-
+  [super layoutSubviews];
+  self.collectionView.contentInset = UIEdgeInsetsMake(0, 0, 0, 0);
 }
 
-#pragma mark - UITextViewDelegate
+- (void)subviewsInit
+{
+  [self addSubview:self.collectionView];
+
+  NSDictionary *metrics = nil;
+  NSDictionary *views = NSDictionaryOfVariableBindings(_collectionView);
+
+  [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-5-[_collectionView]-5-|" options:0 metrics:metrics views:views]];
+  [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-5-[_collectionView]" options:0 metrics:metrics views:views]];
+  self.collectionViewHeight = [NSLayoutConstraint constraintWithItem:self.collectionView attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeHeight multiplier:0 constant:collectionViewHeight];
+  [self addConstraint:self.collectionViewHeight];
+}
+
+#pragma mark - CollectionView Delegates
+
+- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
+{
+  return 10;
+}
+
+- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
+{
+  UICollectionViewCell *cell = [self.collectionView dequeueReusableCellWithReuseIdentifier:NSStringFromClass(UICollectionViewCell.class) forIndexPath:indexPath];
+
+  cell.backgroundColor = [self.class randomColor];
+
+  return cell;
+}
+
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
+{
+}
 
 #pragma mark - getters & setters
 
-- (UITextView *)inputField
+- (UICollectionView *)collectionView
 {
-  if (_inputField) {
-    return _inputField;
+  if (_collectionView) {
+    return _collectionView;
   }
 
-  _inputField = [[UITextView alloc] init];
-  _inputField.translatesAutoresizingMaskIntoConstraints = NO;
-  return _inputField;
+  _collectionView = [[UICollectionView alloc] initWithFrame:CGRectZero collectionViewLayout:self.collectionViewLayout];
+  _collectionView.translatesAutoresizingMaskIntoConstraints = NO;
+  _collectionView.delegate = self;
+  _collectionView.dataSource = self;
+  _collectionView.backgroundColor = [UIColor darkGrayColor];
+  [_collectionView registerClass:UICollectionViewCell.class forCellWithReuseIdentifier:NSStringFromClass(UICollectionViewCell.class)];
+  _collectionView.showsHorizontalScrollIndicator = NO;
+  _collectionView.showsVerticalScrollIndicator = NO;
+  _collectionView.pagingEnabled = YES;
+  return _collectionView;
 }
 
-- (UIButton *)cameraButton
+- (UICollectionViewLayout *)collectionViewLayout
 {
-  if (_cameraButton) {
-    return _cameraButton;
+  if (_collectionViewLayout) {
+    return _collectionViewLayout;
   }
 
-  _cameraButton = [[UIButton alloc] init];
-  _cameraButton.translatesAutoresizingMaskIntoConstraints = NO;
-  return _cameraButton;
-}
+  UICollectionViewFlowLayout *collectionViewLayout = [[UICollectionViewFlowLayout alloc] init];
+  collectionViewLayout.minimumLineSpacing = 5.0f;
+  collectionViewLayout.minimumInteritemSpacing = 5.0f;
+  collectionViewLayout.itemSize = CGSizeMake(50, 50);
+  collectionViewLayout.scrollDirection = UICollectionViewScrollDirectionHorizontal;
+  collectionViewLayout.sectionInset = UIEdgeInsetsMake(0, 5.0f, 0, 5.0f);
 
-- (UIScrollView *)toolScrollView
-{
-  if (_toolScrollView) {
-    return _toolScrollView;
-  }
-
-  _toolScrollView = [[UIScrollView alloc] init];
-  _toolScrollView.translatesAutoresizingMaskIntoConstraints = NO;
-  _toolScrollView.pagingEnabled = YES;
-  return _toolScrollView;
+  _collectionViewLayout = collectionViewLayout;
+  return _collectionViewLayout;
 }
 
 @end

@@ -1,0 +1,17 @@
+# Uncomment this line to define a global platform for your project
+# platform :ios, '7.0'
+
+target 'ChatBarDemo' do
+
+  pod 'FLEX', '~> 2.1.0'
+
+end
+
+target 'ChatBarDemoTests' do
+
+end
+
+target 'ChatBarDemoUITests' do
+
+end
+

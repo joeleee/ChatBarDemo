@@ -25,7 +25,4 @@
 
 @interface ChatToolBar : UIView
 
-@property (nullable, nonatomic, weak) id<UITextViewDelegate> textViewDelegate;
-@property (nonatomic, weak) id<ChatToolBarLayoutDataSource> layoutDataSource;
-
 @end
